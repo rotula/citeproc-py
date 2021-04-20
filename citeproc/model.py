@@ -1258,9 +1258,11 @@ class Name(CitationStylesElement, Formatted, Affixed, Delimited):
 class Name_Part(CitationStylesElement, Formatted, Affixed, TextCased):
     def format_part(self, given, family):
         if self.get('name') == 'given':
-            given = self.wrap(self.format(self.case(given)))
+            if given:
+                given = self.wrap(self.format(self.case(given)))
         elif self.get('name') == 'family':
-            family = self.wrap(self.format(self.case(family)))
+            if family:
+                family = self.wrap(self.format(self.case(family)))
         return given, family
 
 

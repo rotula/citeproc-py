@@ -74,7 +74,8 @@ class Name(CustomDict):
 
     def parts(self):
         if 'literal' in self:
-            return (None, self['literal'], None, None, None)
+            # return (None, self['literal'], None, None, None)
+            return (self['literal'], None, None, None, None)
         else:
             return (self.get('given'), self.get('family'),
                     self.get('dropping-particle'),

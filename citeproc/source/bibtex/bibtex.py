@@ -193,6 +193,8 @@ class BibTeX(BibliographySource):
             return string_cls(unlatexed)
 
         output = MixedString()
+        output += make_string(title, True)
+        return output
         level = 0
         string = ''
         for char in title:

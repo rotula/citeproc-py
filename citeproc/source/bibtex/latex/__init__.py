@@ -134,9 +134,12 @@ def parse_macro_name(tokens):
     assert token.type in (CHARACTER, TOGGLE_MATH, WHITESPACE)
     name = token.value
     if name.isalpha():
-        while tokens.peek().type == CHARACTER and tokens.peek().value.isalpha():
-            name += next(tokens).value
-        eat_whitespace(tokens)
+        try:
+            while tokens.peek().type == CHARACTER and tokens.peek().value.isalpha():
+                name += next(tokens).value
+            eat_whitespace(tokens)
+        except StopIteration:
+            pass
     return name
 
 
